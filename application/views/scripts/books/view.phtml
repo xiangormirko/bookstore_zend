@@ -1,0 +1,108 @@
+<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" /> 
+
+  <div class="banner">
+    <span class="title">Start a journey with one of our selected books</span>
+    <h1>Online Bookstore</h1>
+    <img class="arrow" src="/images/arrow.svg" alt="Down arrow">
+  </div>
+
+
+ <div class = "container">
+     <article class = "book-table">
+<!--         <table>-->
+<!--             <tr>-->
+<!--                 <td>-->
+<!--                     <h1>--><?//=$this->escape($this->title);?><!--</h1>-->
+<!--                     <h2>--><?//=$this->escape($this->description);?><!--</h2>-->
+<!--                     <table>-->
+<!--                         <tr>-->
+<!--                             <td class="title" colspan="2"><a name="Results">Book Listing</a></td>-->
+<!--                         </tr>-->
+<!--                         --><?//
+//                         foreach($this->books as $book ){ ?>
+<!--                             <tr>-->
+<!--                                 <td class="tabletab">Title </td><td class="value"><a href="./detail/id/--><?//= $book->id ?><!--">--><?//= $book->name?><!--</a>&nbsp;</td>-->
+<!--                             </tr>-->
+<!--                             <tr>-->
+<!--                                 <td class="tabletab">Author </td><td class="value">--><?//=$book->author?><!--&nbsp;</td>-->
+<!--                             </tr>-->
+<!--                             <tr>-->
+<!--                                 <td class="tabletab">Price </td><td class="value">--><?//=$book->price?><!--&nbsp;</td>-->
+<!--                             </tr>-->
+<!--                             <tr>-->
+<!--                                 <td class="tabletab">Category </td><td class="value">--><?//=$book->categoryId?><!--&nbsp;</td>-->
+<!--                             </tr>-->
+<!--                             <tr>-->
+<!--                                 <td class="tabletab">Image URL </td><td class="value"><a href="./detail/id/--><?//= $book->id?><!--"><img width="100" src="/--><?//= $book->imageUrl ?><!--"/></a>&nbsp;</td>-->
+<!--                             </tr>-->
+<!--                             <tr>-->
+<!--                                 <td class="title" colspan="2" class="value">&nbsp;</td>-->
+<!--                             </tr>-->
+<!--                         --><?// } ?>
+<!--                     </table>-->
+<!--                 </td>-->
+<!--             </tr>-->
+<!--         </table>-->
+
+
+
+         <?foreach($this->books as $book){?>
+             <div class = "thumbnail">
+                 <table>
+                     <thead>
+                     <tr>
+                         <th colspan="2" class="table-top">cover</th>
+                     </tr>
+                     </thead>
+                     <tbody>
+                     <tr class = "data">
+                         <td colspan="2"><img width="200" src="/<?= $book->imageUrl ?>"/></td>
+                     </tr>
+                     <tr class ="data">
+                         <td colspan="2" class="img-url"><a href="./detail/id/<?= $book->id?>"><?= $book->imageUrl ?>"/></a>&nbsp;</td>
+                     </tr>
+                     <tr class ="data">
+                         <th scope = "row">Title</th>
+                         <td><a href="./detail/id/<?= $book->id ?>"><?= $book->name?></a>&nbsp;</td>
+                     </tr>
+                     <tr class ="data">
+                         <th scope ="row">Author</th>
+                         <td><?=$book->author?>&nbsp;</td>
+                     </tr>
+                     <tr class ="data">
+                         <th scope ="row">Price</th>
+                         <td>$ <?=$book->price?>&nbsp;</td>
+                     </tr>
+                     <tr class ="data">
+                         <th scope= "row">Category</th>
+                         <td><?=$book->categoryId?>&nbsp;</td>
+                     </tr>
+                     </tbody>
+                 </table>
+             </div>
+         <? } ?>
+
+     </article>
+     <aside class="search">
+        <div id="add-new">
+         <!-- for home exercise -->
+         <h2 id="add-book"><a href="<?php echo $this->url(
+                 array(
+                     'controller' => 'books',
+                     'action'     => 'insert'
+                 ),
+                 'default',
+                 true) ?>">Add a new Book</a></h2>
+         <!--- end home exercise -->
+        </div>
+         <form action="app.js">
+             <h2>Search book</h2>
+             <input type="text" placeholder="Search your book by title name" name="title" id="search" required>
+             <button type="submit"> Search </button>
+         </form>
+     </aside>
+
+
+ </div>
+
+<script src="/js/app.js"></script>
