@@ -15,12 +15,77 @@ class AuthenticationController extends Zend_Controller_Action
 
     public function signupAction()
     {
-        // action body
+        $db = $this->_getParam('db');
+
+        $loginForm = new Application_Form_Login();
+
+        if ($loginForm->isValid($_POST)) {
+
+            $adapter = new Zend_Auth_Adapter_DbTable(
+                $db,
+                'members',
+                'member_login',
+                'member_password',
+                'first_name',
+                'last_name',
+                'email',
+                'birthday'
+            );
+
+            $adapter->setMemberLogin($loginForm->getValue('member_login'));
+            $adapter->setMemberPassword($loginForm->getValue('member_password'));
+            $adapter->setFirstName($loginForm->getValue('first_name'));
+            $adapter->setLastName($loginForm->getValue('last_name'));
+            $adapter->setEmail($loginForm->getValue('email'));
+            $adapter->setBirthday($loginForm->getValue('birthday'));
+
+            $auth   = Zend_Auth::getInstance();
+            $result = $auth->authenticate($adapter);
+
+            if ($result->isValid()) {
+                $this->_helper->FlashMessenger('Successful Login');
+                $this->_redirect('/');
+                return;
+            }
+
+        }
+
+        $this->view->form = $loginForm;
+
     }
 
     public function loginAction()
     {
-        // action body
+        $db = $this->_getParam('db');
+
+        $loginForm = new Application_Form_Login();
+
+
+        if ($loginForm->isValid($_POST)) {
+
+            $adapter = new Zend_Auth_Adapter_DbTable(
+                $db,
+                'members',
+                'member_login',
+                'member_password'
+            );
+
+            $adapter->setIdentity($loginForm->getValue('member_login'));
+            $adapter->setCredential($loginForm->getValue('member_password'));
+
+            $auth   = Zend_Auth::getInstance();
+            $result = $auth->authenticate($adapter);
+
+            if ($result->isValid()) {
+                $this->_helper->FlashMessenger('Successful Login');
+                $this->_redirect('/');
+                return;
+            }
+
+        }
+
+        $this->view->form = $loginForm;
+
     }
 
     public function logoutAction()

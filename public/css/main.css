@@ -271,6 +271,7 @@ button, input#submit {
 }
 
 input[type="text"],
+input[type="password"],
 textarea,
 select {
   background: rgba(255,255,255,0.1);
