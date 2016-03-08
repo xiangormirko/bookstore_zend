@@ -6,7 +6,7 @@ public function loggedInAs ()
     {
         $auth = Zend_Auth::getInstance();
         if ($auth->hasIdentity()) {
-            $username = $auth->getIdentity();
+            $username = $auth->getIdentity()->member_login;
             $logoutUrl = $this->view->url(array('controller'=>'Authentication',
                 'action'=>'logout'), null, true);
 

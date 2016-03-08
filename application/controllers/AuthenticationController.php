@@ -67,8 +67,12 @@ class AuthenticationController extends Zend_Controller_Action
             $result = $auth->authenticate($adapter);
 
             if ($result->isValid()) {
-                $this->_helper->FlashMessenger('Successful Login');
-                $this->_redirect('/');
+                $userInfo = $adapter->getResultRowObject(null, 'password');
+
+                // the default storage is a session with namespace Zend_Auth
+                $authStorage = $auth->getStorage();
+                $authStorage->write($userInfo);
+                $this->_redirect('/Authentication/edit/id/'.$userInfo->member_id);
                 return;
             }
 
