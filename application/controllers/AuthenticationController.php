@@ -11,11 +11,11 @@ class AuthenticationController extends Zend_Controller_Action
     public function indexAction()
     {
         // action body
+        $this->_redirect('/Authentication/login');
     }
 
     public function signupAction()
     {
-
 
         $form = new Application_Form_Signup();
 
@@ -39,6 +39,13 @@ class AuthenticationController extends Zend_Controller_Action
 
     public function loginAction()
     {
+
+        // If we're already logged in, just redirect
+        if(Zend_Auth::getInstance()->hasIdentity())
+        {
+            $this->_redirect('books');
+        }
+
         $db = $this->_getParam('db');
 
         $loginForm = new Application_Form_Login();
@@ -77,7 +84,9 @@ class AuthenticationController extends Zend_Controller_Action
         $this->_helper->redirector('login'); // back to login page
     }
 
-
+    /**
+     *
+     */
     public function editAction()
     {
         // action body
