@@ -31,14 +31,8 @@ class Application_Form_Signup extends Zend_Form
             'label' => 'Confirm Password:',
             'required' => true,
             'validators' => array(
-                array('stringLength', false, array(3, 20),
-                    array(
-                        'name' => 'Identical',
-                            'options' => array(
-                                'token' => 'password',
-                            ),
-                    )
-                )
+                array('stringLength', false, array(5, 20)),
+                array('identical', false, array('token' => 'member_password'))
             )
         ));
 
