@@ -8,17 +8,17 @@
 /*td.tabletab{background-color: #FFFFFF; border-style: inset; border-width: 0;font-size: 10pt; color: #CE7E00; font-weight: bold}*/
 /*a.prev, a.next {font-size: 10pt; color: #CE7E00; font-weight: bold}*/
 
-#content { }
-  #content h1 { font-size: 2.4em; font-weight: normal; line-height: 32px; margin: 0px 0 50px 0; }
-  #content p { font-size: 1.4em; line-height: 22px; margin-bottom: 20px; color: black}
+/*#content { }*/
+  /*#content h1 { font-size: 2.4em; font-weight: normal; line-height: 32px; margin: 0px 0 50px 0; }*/
+  /*#content p { font-size: 1.4em; line-height: 22px; margin-bottom: 20px; color: black}*/
 
-  /* relevant for the book image - start */
-  #gallery { position: relative; }
-    #pictures { position: relative; width:350; height: auto; }
-    #pictures img { position: absolute; width:100%;top: 0; right: 0; left:0 }
+  /*!* relevant for the book image - start *!*/
+  /*#gallery { position: relative; }*/
+    /*#pictures { position: relative; width:350; height: auto; }*/
+    /*#pictures img { position: absolute; width:100%;top: 0; right: 0; left:0 }*/
 
-    #prev, #next { margin-top: 520px; text-align: left; font-size: 1em; }
-  /* relevant for the book image - end */
+    /*#prev, #next { margin-top: 520px; text-align: left; font-size: 1em; }*/
+  /*!* relevant for the book image - end *!*/
 
 .zend_form{
   background: #f4f7f8;
@@ -128,7 +128,9 @@ img {
   max-width: 100%;
 }
 
-/* ---- Navigation ---- */
+/* =================================
+  Navigation
+==================================== */
 
 .name {
   font-size: 1.35em;
@@ -152,7 +154,9 @@ img {
   color: #093a58;
 }
 
-/* ---- Layout Containers ---- */
+/* =================================
+  Layout Containers
+==================================== */
 
 .main-header {
   padding-top: .5em;
@@ -189,11 +193,10 @@ img {
   flex-grow: 1;
 }
 
+/* =================================
+  Page Elements
+==================================== */
 
-
-
-
-/* ---- Page Elements ---- */
 
 .arrow {
   width: 50px;
@@ -270,7 +273,6 @@ button, input#submit {
   border-radius: 5px;
   width: 100%;
   border: 1px solid #0B556D;
-  border-width: 1px 1px 3px;
   box-shadow: 0 -1px 0 rgba(255,255,255,0.1) inset;
   margin-bottom: 10px;
 }
@@ -335,19 +337,6 @@ th, td {
   font-weight: 300;
 }
 
-/*
-tfoot tr {
-  background: none;
-}
-
-tfoot td {
-  padding: 10px 2px;
-  font-size: 0.8em;
-  font-style: italic;
-  color: #8a97a0;
-}
-*/
-
 th[scope="row"] {
   font-weight: bold;
 }
@@ -392,6 +381,63 @@ Lightbox overlay implementation
   color: white;
 }
 
+
+/* =================================
+Date Picker
+==================================== */
+
+.ui-datepicker {
+  background-color: #3a3a3a;
+  color: whitesmoke;
+}
+
+.ui-datepicker a {
+  text-decoration: none;
+}
+
+.ui-datepicker table {
+  width: 100%;
+}
+
+.ui-datepicker-title {
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.ui-datepicker-year {
+  margin-bottom: 1rem;
+}
+
+
+.ui-datepicker thead {
+  padding: 0.5rem;
+  margin: 0;
+}
+
+.ui-datepicker th {
+  padding: 0.5rem;
+  margin: 0;
+}
+
+.ui-datepicker td {
+  padding: 0.5rem;
+  margin: 0;
+  text-align: center;
+}
+
+.ui-datepicker-prev {
+  float: left;
+  background-position: center -30px;
+  padding: 0.5rem;
+  color: whitesmoke;
+}
+.ui-datepicker-next {
+  float: right;
+  background-position: center 0px;
+  padding: 0.5rem;
+  color: whitesmoke;
+}
 /* =================================
 Flex layout
 ==================================== */

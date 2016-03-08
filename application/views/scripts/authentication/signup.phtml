@@ -5,3 +5,17 @@
 	echo $this->form;
 	?>
 </div>
+
+<script src="//code.jquery.com/ui/1.12.0-beta.1/jquery-ui.min.js"></script>
+
+<script>
+    $(function() {
+        $( "#birthday" ).datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeYear: true,
+            inline: true,
+            showOtherMonths: true,
+            dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        });
+    });
+</script>

@@ -79,7 +79,7 @@ $(document).ready(function() {
     $overlay.append($image);
     $("body").append($overlay);
 
-    $('body').on('click', 'img', function(event){
+    $('body').on('click', 'td img', function(event){
         event.preventDefault();
         var imageLocation = $(this).attr("src");
         //Update overlay with the image linked in the link
@@ -93,10 +93,12 @@ $(document).ready(function() {
 
     });
 
-//When overlay is clicked
+    //When overlay is clicked
     $overlay.click(function(){
         //Hide the overlay
         $overlay.hide();
     });
+
+
 
 }); //end ready

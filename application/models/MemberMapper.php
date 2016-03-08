@@ -53,12 +53,12 @@ class Application_Model_MemberMapper
         $row = $result->current();
 
         $member->setId($row->member_id)
-            ->setMemberLogin($row->member_login)
-            ->setMemberPassword($row->member_password)
-            ->setFirstName($row->first_name)
-            ->setLastName($row->last_name)
-            ->setEmail($row->email)
-            ->setBirthday($row->birthday);
+                ->setMemberLogin($row->member_login)
+                ->setMemberPassword($row->member_password)
+                ->setFirstName($row->first_name)
+                ->setLastName($row->last_name)
+                ->setEmail($row->email)
+                ->setBirthday($row->birthday);
     }
 
     public function fetchAll()

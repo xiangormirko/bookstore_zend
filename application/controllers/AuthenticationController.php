@@ -76,10 +76,35 @@ class AuthenticationController extends Zend_Controller_Action
         // action body
     }
 
+    /**
+     *
+     */
     public function editAction()
     {
         // action body
-    }
+        $request = $this->getRequest();
+        $id = $request->getParam("id");
+
+        $form    = new Application_Form_Signup();
+
+        $member  = new Application_Model_Member();
+        $mapper  = new Application_Model_MemberMapper();
+        $mapper->find($id, $member);
+		$this->view->member = $member;
+
+
+        $form->populate($member->toArray());
+
+        $this->view->form=$form;
+//        $request = $this->getRequest();
+//        $id = $request->getParam("id");
+//
+//        $member    = new Application_Model_Member();
+//        $mapper  = new Application_Model_MemberMapper();
+//        $mapper->find($id, $member);
+//        $this->view->member = $member;
+
+}
 
 
 }

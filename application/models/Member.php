@@ -83,6 +83,7 @@ class Application_Model_Member
     public function setFirstName($text)
     {
         $this->_first_name = (string) $text;
+        return $this;
     }
 
     public function getFirstName()
@@ -93,6 +94,7 @@ class Application_Model_Member
     public function setLastName($text)
     {
         $this->_last_name = (string) $text;
+        return $this;
     }
 
     public function getLastName()
@@ -103,6 +105,7 @@ class Application_Model_Member
     public function setEmail($text)
     {
         $this->_email = (string) $text;
+        return $this;
     }
 
     public function getEmail()
@@ -113,11 +116,21 @@ class Application_Model_Member
     public function setBirthday($text)
     {
         $this->_birthday = (string) $text;
+        return $this;
     }
 
     public function getBirthday()
     {
         return $this->_birthday;
+    }
+
+    public function toArray() {
+        $vars = get_object_vars ( $this );
+        $array = array ();
+        foreach ( $vars as $key => $value ) {
+            $array [ltrim ( $key, '_' )] = $value;
+        }
+        return $array;
     }
 
 
