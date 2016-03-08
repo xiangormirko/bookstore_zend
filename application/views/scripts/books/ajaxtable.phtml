@@ -16,8 +16,16 @@
         <td class="tabletd" id="bookauthor"><?= $book['author'] ?></td>
         <td class="tabletd"><?= $book['price'] ?></td>
         <td class="tabletd"><?= $book['category_id'] ?></td>
-        <td class="tabletd"><img width="50" src="/<?= $book['image_url'] ?>"/></td>
+        <td class="tabletd"><img width="100" src="/<?= $book['image_url'] ?>"/></td>
     </tr>
 <? } ?>
     </tbody>
 </table>
+
+
+<script type="text/javascript" src="/js/jquery.tablesorter.js"></script>
+<script>
+    $(function() {
+        $( "#bookTableAll" ).tablesorter();
+    });
+</script>

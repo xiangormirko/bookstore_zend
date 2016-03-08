@@ -73,12 +73,11 @@ class AuthenticationController extends Zend_Controller_Action
 
     public function logoutAction()
     {
-        // action body
+        Zend_Auth::getInstance()->clearIdentity();
+        $this->_helper->redirector('login'); // back to login page
     }
 
-    /**
-     *
-     */
+
     public function editAction()
     {
         // action body

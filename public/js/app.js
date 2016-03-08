@@ -6,21 +6,21 @@ $(document).ready(function() {
         var $targetElement = $('article.book-table');
         $targetElement.empty();
 
+        // ajax to get the table of books based on search
         $.post('ajaxtable',
             {'keyword':keyword},
             function (response) {
                 var url = 'ajaxtable/keyword/' + encodeURI(keyword)
-                var $banner = $('.banner');
+                var $banner = $('#fortable');
                 $banner.empty();
-
-                $banner.load(url + ' #bookTableAll')
+                $banner.load(url + ' #bookTableAll');
             }
         );
 
+        // ajax request to create thumbnails based on search
         $.post('ajax',
             {'keyword':keyword},
             function (response) {
-                console.log("got it 2!!");
 
                 var jsonObject = $.parseJSON(response); //Parse into json Objects
                 //var $targetElement = $('article.book-table');
@@ -28,7 +28,6 @@ $(document).ready(function() {
 
 
                 $.each(jsonObject, function (i, obj) {
-                    console.log('looping');
 
                     var $targetElement = $('article.book-table');
 
@@ -115,6 +114,12 @@ $(document).ready(function() {
         //Hide the overlay
         $overlay.hide();
     });
+
+    $( "#bookTableAll" ).click(function(){
+        //Hide the overlay
+        $( "#bookTableAll" ).tablesorter();
+    });
+
 
 
 

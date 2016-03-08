@@ -1,6 +1,10 @@
 <?php
         include "header.phtml";        
 ?>
+
+
+    <div class="auth"><?php echo$this->loggedInAs();?></div>
+
         
         <?=$this->layout()->content; ?>
  
