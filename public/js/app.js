@@ -3,17 +3,32 @@ $(document).ready(function() {
     $('form').submit( function(evt) {
         evt.preventDefault();
         var keyword = $('#search').val();
-        console.log(keyword);
+        var $targetElement = $('article.book-table');
+        $targetElement.empty();
+
+        $.post('ajaxtable',
+            {'keyword':keyword},
+            function (response) {
+                var url = 'ajaxtable/keyword/' + encodeURI(keyword)
+                var $banner = $('.banner');
+                $banner.empty();
+
+                $banner.load(url + ' #bookTableAll')
+            }
+        );
 
         $.post('ajax',
             {'keyword':keyword},
             function (response) {
-                console.log("got it!!");
+                console.log("got it 2!!");
 
                 var jsonObject = $.parseJSON(response); //Parse into json Objects
-                $('article.book-table').empty();
+                //var $targetElement = $('article.book-table');
+                //$targetElement.empty();
+
 
                 $.each(jsonObject, function (i, obj) {
+                    console.log('looping');
 
                     var $targetElement = $('article.book-table');
 
@@ -67,9 +82,11 @@ $(document).ready(function() {
                     );
 
                 });
+
             }
 
-        )
+        ) //end Post Ajax
+
 
     }); //end submit
 

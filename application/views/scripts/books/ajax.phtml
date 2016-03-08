@@ -1,4 +1,35 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Books</b> and script/action name <b>ajax</b></p>
-</div>
+<?foreach($this->books as $book){?>
+	<div class = "thumbnail">
+		<table>
+			<thead>
+			<tr>
+				<th colspan="2" class="table-top">cover</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr class = "data">
+				<td colspan="2"><img width="200" src="/<?= $book->imageUrl ?>"/></td>
+			</tr>
+			<tr class ="data">
+				<td colspan="2" class="img-url"><a href="./detail/id/<?= $book->id?>"><?= $book->imageUrl ?>"/></a>&nbsp;</td>
+			</tr>
+			<tr class ="data">
+				<th scope = "row">Title</th>
+				<td><a href="./detail/id/<?= $book->id ?>"><?= $book->name?></a>&nbsp;</td>
+			</tr>
+			<tr class ="data">
+				<th scope ="row">Author</th>
+				<td><?=$book->author?>&nbsp;</td>
+			</tr>
+			<tr class ="data">
+				<th scope ="row">Price</th>
+				<td>$ <?=$book->price?>&nbsp;</td>
+			</tr>
+			<tr class ="data">
+				<th scope= "row">Category</th>
+				<td><?=$book->categoryId?>&nbsp;</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+<? } ?>

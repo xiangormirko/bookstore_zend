@@ -7,44 +7,8 @@
   </div>
 
 
- <div class = "container">
+ <div class = "container" id="main-container">
      <article class = "book-table">
-<!--         <table>-->
-<!--             <tr>-->
-<!--                 <td>-->
-<!--                     <h1>--><?//=$this->escape($this->title);?><!--</h1>-->
-<!--                     <h2>--><?//=$this->escape($this->description);?><!--</h2>-->
-<!--                     <table>-->
-<!--                         <tr>-->
-<!--                             <td class="title" colspan="2"><a name="Results">Book Listing</a></td>-->
-<!--                         </tr>-->
-<!--                         --><?//
-//                         foreach($this->books as $book ){ ?>
-<!--                             <tr>-->
-<!--                                 <td class="tabletab">Title </td><td class="value"><a href="./detail/id/--><?//= $book->id ?><!--">--><?//= $book->name?><!--</a>&nbsp;</td>-->
-<!--                             </tr>-->
-<!--                             <tr>-->
-<!--                                 <td class="tabletab">Author </td><td class="value">--><?//=$book->author?><!--&nbsp;</td>-->
-<!--                             </tr>-->
-<!--                             <tr>-->
-<!--                                 <td class="tabletab">Price </td><td class="value">--><?//=$book->price?><!--&nbsp;</td>-->
-<!--                             </tr>-->
-<!--                             <tr>-->
-<!--                                 <td class="tabletab">Category </td><td class="value">--><?//=$book->categoryId?><!--&nbsp;</td>-->
-<!--                             </tr>-->
-<!--                             <tr>-->
-<!--                                 <td class="tabletab">Image URL </td><td class="value"><a href="./detail/id/--><?//= $book->id?><!--"><img width="100" src="/--><?//= $book->imageUrl ?><!--"/></a>&nbsp;</td>-->
-<!--                             </tr>-->
-<!--                             <tr>-->
-<!--                                 <td class="title" colspan="2" class="value">&nbsp;</td>-->
-<!--                             </tr>-->
-<!--                         --><?// } ?>
-<!--                     </table>-->
-<!--                 </td>-->
-<!--             </tr>-->
-<!--         </table>-->
-
-
 
          <?foreach($this->books as $book){?>
              <div class = "thumbnail">

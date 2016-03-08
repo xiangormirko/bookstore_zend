@@ -20,15 +20,6 @@ class BooksController extends Zend_Controller_Action
         $book = new Application_Model_BookMapper();
         $this->view->books = $book->fetchAll();
 
-        if ($this->getRequest()->isPost()) {
-            $request = $this->getRequest();
-            $title = $request->getParam("keyword");
-
-            $book    = new Application_Model_Book();
-            $mapper  = new Application_Model_BookMapper();
-            $mapper->find($title, $book);
-            echo "hello";
-        }
 
     }
 
@@ -101,11 +92,51 @@ class BooksController extends Zend_Controller_Action
 
         $result = $db->fetchAll($sql, $key);
 
-        echo json_encode($result);
+        $this->view->books = $result;
 
+        echo json_encode($result);
+//        return $this->view->render('books/ajax.phtml');
+
+    }
+
+    public function ajaxtableAction()
+    {
+        // action body
+        $db = new Zend_Db_Adapter_Pdo_Mysql(array(
+            'host'     => 'localhost',
+            'username' => 'root',
+            'password' => '',
+            'dbname'   => 'bookstore'
+        ));
+        // action body
+        $request = $this->getRequest();
+        $title = $request->getParam("keyword");
+
+
+//        $this->_helper->viewRenderer->setNoRender(true);
+//        $this->_helper->getHelper('layout')->disableLayout();
+//        $this->view->addScriptPath(APPLICATION_PATH . '/layouts/scripts/');
+
+        $sql = "SELECT * FROM items WHERE name LIKE ?";
+        $key ='%' . $title . '%';
+
+        $result = $db->fetchAll($sql, $key);
+
+
+        $this->view->books = $result;
+//        print_r($result);
+//
+//        $html = $this->view->render('/books/ajaxtable.phtml');
+//        print_r($html);
+//
+//        return $html;
     }
 
 
 }
+
+
+
+
 
 

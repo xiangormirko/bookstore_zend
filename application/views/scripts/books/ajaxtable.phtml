@@ -1,0 +1,23 @@
+
+<table id="bookTableAll">
+    <thead>
+    <tr>
+        <th>title</th>
+        <th>author</th>
+        <th>price</th>
+        <th>category</th>
+        <th>cover</th>
+    </tr>
+    </thead>
+    <tbody>
+<?foreach($this->books as $book){?>
+    <tr class = "data">
+        <td class="tabletd" id="booktitle"><?= $book['name'] ?></td>
+        <td class="tabletd" id="bookauthor"><?= $book['author'] ?></td>
+        <td class="tabletd"><?= $book['price'] ?></td>
+        <td class="tabletd"><?= $book['category_id'] ?></td>
+        <td class="tabletd"><img width="50" src="/<?= $book['image_url'] ?>"/></td>
+    </tr>
+<? } ?>
+    </tbody>
+</table>
