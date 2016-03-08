@@ -15,42 +15,25 @@ class AuthenticationController extends Zend_Controller_Action
 
     public function signupAction()
     {
-        $db = $this->_getParam('db');
 
-        $loginForm = new Application_Form_Login();
 
-        if ($loginForm->isValid($_POST)) {
+        $form = new Application_Form_Signup();
 
-            $adapter = new Zend_Auth_Adapter_DbTable(
-                $db,
-                'members',
-                'member_login',
-                'member_password',
-                'first_name',
-                'last_name',
-                'email',
-                'birthday'
-            );
+        if ($form->isValid($_POST)) {
+            $member = new Application_Model_Member();
+            $mapper = new Application_Model_MemberMapper();
+            $member->setMemberLogin($form->getValue('member_login'));
+            $member->setMemberPassword($form->getValue('member_password'));
+            $member->setFirstName($form->getValue('first_name'));
+            $member->setLastName($form->getValue('last_name'));
+            $member->setEmail($form->getValue('email'));
+            $member->setBirthday($form->getValue('birthday'));
+            $mapper->save($member);
 
-            $adapter->setMemberLogin($loginForm->getValue('member_login'));
-            $adapter->setMemberPassword($loginForm->getValue('member_password'));
-            $adapter->setFirstName($loginForm->getValue('first_name'));
-            $adapter->setLastName($loginForm->getValue('last_name'));
-            $adapter->setEmail($loginForm->getValue('email'));
-            $adapter->setBirthday($loginForm->getValue('birthday'));
-
-            $auth   = Zend_Auth::getInstance();
-            $result = $auth->authenticate($adapter);
-
-            if ($result->isValid()) {
-                $this->_helper->FlashMessenger('Successful Login');
-                $this->_redirect('/');
-                return;
-            }
-
+            return $this->_helper->redirector('index');
         }
 
-        $this->view->form = $loginForm;
+        $this->view->form = $form;
 
     }
 

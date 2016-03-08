@@ -27,13 +27,12 @@ class Application_Model_MemberMapper
     public function save(Application_Model_Member $member)
     {
         $data = array(
-            'category_id' => $member->getCategoryId(),
-            'name' => $member->getName(),
-            'author' => $member->getAuthor(),
-            'publisher' => $member->getPublisher(),
-            'isbn' => $member->getIsbn(),
-            'price' => $member->getPrice(),
-            'image_url' => $member->getImageUrl(),
+            'member_login' => $member->getMemberLogin(),
+            'member_password' => $member->getMemberPassword(),
+            'first_name' => $member->getFirstName(),
+            'last_name' => $member->getLastName(),
+            'email' => $member->getEmail(),
+            'birthday' => $member->getBirthday(),
         );
 
         if (null === ($id = $member->getId())) {

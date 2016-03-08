@@ -242,6 +242,11 @@ form {
   align-items: center;
 }
 
+ul.errors li {
+  color: lightcoral;
+  font-size: 0.8rem;
+  margin-top: -1.5rem;
+}
 
 
 
