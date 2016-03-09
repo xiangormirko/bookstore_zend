@@ -2,6 +2,7 @@
 
 class Application_Model_Member
 {
+    /*  Custom model for members */
     protected $_id;
     protected $_member_login;
     protected $_member_password;
@@ -123,7 +124,7 @@ class Application_Model_Member
     {
         return $this->_birthday;
     }
-
+    /*  Utility function to return result in an array format */
     public function toArray() {
         $vars = get_object_vars ( $this );
         $array = array ();

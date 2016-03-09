@@ -2,12 +2,10 @@
         include "header.phtml";        
 ?>
 
-
+    <!--/.calls helper method to check if user is logged in-->
     <div class="auth"><?php echo$this->loggedInAs();?></div>
-
         
         <?=$this->layout()->content; ?>
- 
 
 <?php
         include "footer.phtml";

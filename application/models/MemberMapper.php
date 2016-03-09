@@ -2,6 +2,7 @@
 
 class Application_Model_MemberMapper
 {
+    /* Mapper for Member model */
     protected $_dbTable;
 
     public function setDbTable($dbTable)

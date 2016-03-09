@@ -16,7 +16,7 @@ class AuthenticationController extends Zend_Controller_Action
 
     public function signupAction()
     {
-
+        /*  Sign up action for new members */
         $form = new Application_Form_Signup();
 
         if ($form->isValid($_POST)) {

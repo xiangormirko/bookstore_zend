@@ -4,6 +4,7 @@ class Zend_View_Helper_LoggedInAs extends Zend_View_Helper_Abstract
 {
 public function loggedInAs ()
     {
+        /*  Helper method to check if users are logged in */
         $auth = Zend_Auth::getInstance();
         if ($auth->hasIdentity()) {
             $username = $auth->getIdentity()->member_login;
@@ -12,7 +13,6 @@ public function loggedInAs ()
 
             return '<p class="welcome"> Welcome ' . $username .'</p>'. '. <a class="logout" href="'.$logoutUrl.'">Logout</a>';
 
-//            return '<p class="welcome"> Welcome ' . $username . '. </p><a class= "logout" href="'.$logoutUrl.'">Logout</a>';
         }
 
     $request = Zend_Controller_Front::getInstance()->getRequest();
