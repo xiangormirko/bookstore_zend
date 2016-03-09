@@ -104,10 +104,33 @@ class AuthenticationController extends Zend_Controller_Action
         $mapper->find($id, $member);
 		$this->view->member = $member;
 
-
         $form->populate($member->toArray());
 
+        if ($this->getRequest()->isPost()) {
+            if ($form->isValid($_POST)) {
+
+                try {
+                    $member->setMemberLogin($form->getValue('member_login'));
+                    $member->setMemberPassword($form->getValue('member_password'));
+                    $member->setFirstName($form->getValue('first_name'));
+                    $member->setLastName($form->getValue('last_name'));
+                    $member->setEmail($form->getValue('email'));
+                    $member->setBirthday($form->getValue('birthday'));
+                    $mapper->save($member);
+                } catch (Exception $e) {
+                    echo 'Caught exception: ', $e->getMessage(), "\n";
+                }
+
+                return $this->_helper->redirector('index');
+            }
+        }
+
         $this->view->form=$form;
+
+
+
+
+
 //        $request = $this->getRequest();
 //        $id = $request->getParam("id");
 //

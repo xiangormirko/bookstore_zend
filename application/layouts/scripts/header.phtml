@@ -12,9 +12,24 @@
    <nav>
    <ul class="main-nav">
     <li><a href="/books">Home</a></li>
-    <li><a href="#">Members</a></li>
+
+    <!--/.if logged in when member is clicked, direct to edit, else to signup-->
+    <li><a href=  <?php
+     $auth = Zend_Auth::getInstance();
+     if ($auth->hasIdentity()) {
+      echo '/Authentication/edit/id/'.$auth->getIdentity()->member_id;
+     } else {
+      echo "/Authentication/signup";
+     }?>>Members</a></li>
     <li><a href="#">Cart</a></li>
-    <li><a href="/authentication/login">Login</a></li>
+
+    <!--/.if logged in no Login tab, else add login and signup tabs-->
+    <?php
+    $auth = Zend_Auth::getInstance();
+    if ($auth->hasIdentity()) {
+    } else {
+     echo '<li><a href="/authentication/login">Login</a></li><li><a href="/authentication/signup">Signup</a></li>';
+    }?>
     <li><a href="/#">Contact</a></li>
    </ul>
    </nav>

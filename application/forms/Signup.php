@@ -7,6 +7,7 @@ class Application_Form_Signup extends Zend_Form
     {
         $this->setMethod('post');
 
+        // Validates alphanumeric, min length 5 char, and no existing matching record
         $this->addElement(
             'text', 'member_login', array(
             'label' => 'Login ID:',
@@ -14,7 +15,9 @@ class Application_Form_Signup extends Zend_Form
             'filters'    => array('StringTrim'),
             'validators' => array(
                 array('Alnum', false, true),
-                array('stringLength', false, array(5, 20))
+                array('stringLength', false, array(5, 20)),
+                array('Db_NoRecordExists', false, array('table' => 'members',
+                    'field' => 'member_login'))
             )
         ));
 
@@ -27,6 +30,7 @@ class Application_Form_Signup extends Zend_Form
             )
         ));
 
+        // Validates matching passwords and min length
         $this->addElement('password', 'password_confirm', array(
             'label' => 'Confirm Password:',
             'required' => true,
@@ -53,6 +57,7 @@ class Application_Form_Signup extends Zend_Form
             )
         ));
 
+        //Validates valid email format
         $this->addElement('text', 'email', array(
             'label'      => 'Email:',
             'required'   => true,
@@ -61,6 +66,7 @@ class Application_Form_Signup extends Zend_Form
             )
         ));
 
+        //Validates valid date format
         $this->addElement('text', 'birthday', array(
             'label'      => 'Birthday:',
             'required'   => false,
