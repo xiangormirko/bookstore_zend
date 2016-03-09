@@ -22,7 +22,7 @@
 
 .zend_form{
   background: #f4f7f8;
-  width:460px;
+  width: 500px;
   margin:5px auto;
   padding: 1rem;
   overflow:auto;
@@ -541,8 +541,9 @@ Flex layout
 /*Small Screens*/
 @media (max-width: 768px) {
   h1 {
-    font-size: 3rem;
+    font-size: 2rem;
     line-height: 1.1;
+
   }
 
   .title {
@@ -565,5 +566,8 @@ Flex layout
 
   .search {
     order: -1;
+  }
+  .zend_form {
+    width: 300px;
   }
 }

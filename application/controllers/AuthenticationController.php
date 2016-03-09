@@ -74,6 +74,8 @@ class AuthenticationController extends Zend_Controller_Action
                 $authStorage->write($userInfo);
                 $this->_redirect('/Authentication/edit/id/'.$userInfo->member_id);
                 return;
+            } else {
+                $this->_redirect('/Authentication/signup');
             }
 
         }
