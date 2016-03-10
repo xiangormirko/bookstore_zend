@@ -16,8 +16,8 @@ public function loggedInAs ()
         }
 
     $request = Zend_Controller_Front::getInstance()->getRequest();
-    $controller = $request->getControllerName();
-    $action = $request->getActionName();
+//    $controller = $request->getControllerName();
+//    $action = $request->getActionName();
 
 
     }

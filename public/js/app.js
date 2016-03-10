@@ -1,6 +1,8 @@
 
 $(document).ready(function() {
     $('form').submit( function(evt) {
+
+        // prevent default redirect and get value from form
         evt.preventDefault();
         var keyword = $('#search').val();
         var $targetElement = $('article.book-table');
@@ -89,6 +91,8 @@ $(document).ready(function() {
 
     }); //end submit
 
+
+    // lightbox image implementation
     var $overlay = $('<div id="overlay"></div>');
     var $image = $("<img>");
 

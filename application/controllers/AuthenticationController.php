@@ -19,6 +19,7 @@ class AuthenticationController extends Zend_Controller_Action
         /*  Sign up action for new members */
         $form = new Application_Form_Signup();
 
+        /*  set member variables */
         if ($form->isValid($_POST)) {
             $member = new Application_Model_Member();
             $mapper = new Application_Model_MemberMapper();
@@ -59,7 +60,7 @@ class AuthenticationController extends Zend_Controller_Action
                 'member_login',
                 'member_password'
             );
-
+            /*  check credentials against datatabase */
             $adapter->setIdentity($loginForm->getValue('member_login'));
             $adapter->setCredential($loginForm->getValue('member_password'));
 
@@ -69,7 +70,7 @@ class AuthenticationController extends Zend_Controller_Action
             if ($result->isValid()) {
                 $userInfo = $adapter->getResultRowObject(null, 'password');
 
-                // the default storage is a session with namespace Zend_Auth
+                // set user information to default database for later use
                 $authStorage = $auth->getStorage();
                 $authStorage->write($userInfo);
                 $this->_redirect('/Authentication/edit/id/'.$userInfo->member_id);
